@@ -1,5 +1,4 @@
-import { createContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { createContext, useState } from "react";
 export const BooksContext = createContext(null);
 export const BooksProvider = ({ children }) => {
   const [searchResult, setSearchResult] = useState([]);

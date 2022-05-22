@@ -1,39 +1,40 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { UsersContext } from "./UsersContext";
+import { useContext } from "react";
 import SearchBooks from "./SearchBooks";
 
-import { IconContext } from "react-icons/lib";
-import { GiGalaxy } from "react-icons/gi";
-import { CgProfile } from "react-icons/cg";
-
 const NavBar = () => {
+  const { currentUser } = useContext(UsersContext);
+  let navigate = useNavigate();
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/user/${currentUser}`);
+  };
   return (
-    <IconContext.Provider value={{ size: "35px", color: "white" }}>
-      <NavDiv>
-        <DIV>
-          {/* <GiGalaxy /> */}
-          <NavigationLink to="/">
-            <H2>The Book Shelf</H2>
-          </NavigationLink>
-        </DIV>
-
-        <DIV>
-          <SearchBooks />
-          {/* <CgProfile /> */}
-          <NavigationLink to="/signin">
-            <H2>Sign In</H2>
-          </NavigationLink>
-        </DIV>
-      </NavDiv>
-    </IconContext.Provider>
+    <NavDiv>
+      <DIV>
+        <NavigationLink to="/">
+          <H2>The Book Shelf</H2>
+        </NavigationLink>
+      </DIV>
+      <DIV>
+        <SearchBooks />
+        <NavigationLink to={currentUser === null ? "/login" : "#"}>
+          {currentUser != null ? (
+            <H1 onClick={handleClick}>Hey, {currentUser.username}!</H1>
+          ) : (
+            <H2>Log In</H2>
+          )}
+        </NavigationLink>
+      </DIV>
+    </NavDiv>
   );
 };
 export default NavBar;
+
 const NavDiv = styled.div`
-  background: linear-gradient(110deg, #37fff9 20%, #fc803d 60%, #3dfce9 30%);
   justify-content: space-between;
-  background-color: grey;
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -51,5 +52,14 @@ const DIV = styled.div`
 const H2 = styled.h2`
   font-family: "Pacifico", cursive;
   color: black;
-  font-size: 60px;
+  font-size: 70px;
+  margin-left: 25px; ;
+`;
+const H1 = styled.h1`
+  font-size: 30px;
+  display: flex;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 28px;
+  font-family: "Pacifico", bold;
 `;

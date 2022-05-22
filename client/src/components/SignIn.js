@@ -8,7 +8,7 @@ const SignIn = () => {
     email: "",
     birthday: "",
     password: "",
-    confirmPassword: "",
+    // confirmPassword: "",
   });
   const inputs = [
     {
@@ -50,43 +50,33 @@ const SignIn = () => {
       pattern:
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$",
     },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      errorMessage: "Password don't match!",
-      label: "Confirm Password",
-      require: true,
-      pattern: values.password,
-    },
   ];
-  console.log(values);
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/signin", {
+    const settings = {
+      method: "POST",
+      body: JSON.stringify(values),
       headers: {
-        method: "POST",
-        "Content-type": "application/json",
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: values.username,
-        email: values.email,
-        password: values.password,
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
+    };
+
+    fetch("http://localhost:5000/signin", settings)
+      .then((res) => res.json())
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log("ERROR: ", error));
   };
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    console.log(e.target.name);
   };
   return (
     <>
       <MainDiv>
-        <h2>Register</h2>
         <Form onSubmit={handleSubmit}>
+          <H2>Registration</H2>
           {inputs.map((input) => (
             <FormInput
               key={input.id}
@@ -106,22 +96,30 @@ const MainDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* justify-content: center; */
   color: black;
+  position: relative;
 `;
 const Form = styled.form`
   padding: 0px 60px;
+  border-radius: 10px;
+  border: 4px solid #e6850b;
+  box-shadow: 0px 0px 25px 1px #e86f83;
+  background: #ddedec;
 `;
 
 const Button = styled.button`
   width: 100%;
-  height: 50px;
   padding: 10px;
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 35px;
   cursor: pointer;
-  margin-top: 15px;
   margin-bottom: 30px;
+`;
+const H2 = styled.h2`
+  margin-top: 25px;
+  margin-bottom: 30px;
+  font-size: 35px;
+  font-family: "Pacifico", cursive;
 `;

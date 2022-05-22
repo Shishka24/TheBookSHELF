@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-// import { Link, useSearchParams } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 import styled from "styled-components";
 import { BooksContext } from "./BooksContext";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +7,6 @@ const SearchBooks = () => {
   const { textValue, setTextValue, setSearchResult, searchResult } =
     useContext(BooksContext);
   const history = useNavigate();
-
   const options = {
     method: "GET",
     headers: {
@@ -17,7 +14,6 @@ const SearchBooks = () => {
       "X-RapidAPI-Key": "2385336b51mshac5593ff9c397a4p1698ffjsnb6910d60abef",
     },
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetch(`https://hapi-books.p.rapidapi.com/search/${textValue}`, options)
@@ -26,16 +22,15 @@ const SearchBooks = () => {
       .catch((err) => console.error(err));
     history("/searchedBooks");
   };
-  console.log(searchResult);
   return (
     <SearchDiv>
       <SearchForm onSubmit={handleSubmit}>
-        <input
-          placeholder="Let's see how we can help you "
+        <Input
+          placeholder="How we can help you? "
           value={textValue}
           onChange={(e) => setTextValue(e.target.value)}
         />
-        <button>Let's Go!</button>
+        <Button>Let's Go!</Button>
       </SearchForm>
     </SearchDiv>
   );
@@ -48,4 +43,10 @@ const SearchDiv = styled.div`
 `;
 const SearchForm = styled.form`
   display: flex;
+`;
+const Input = styled.input`
+  text-align: center;
+`;
+const Button = styled.button`
+  border-radius: 25px;
 `;

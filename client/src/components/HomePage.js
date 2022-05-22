@@ -6,15 +6,13 @@ const Homepage = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     const mainPage = async () => {
-      const res = await fetch(" http://localhost:3001");
+      const res = await fetch(" http://localhost:5000");
       const data = await res.json();
       setBooks(data);
     };
     mainPage();
   }, []);
-  // console.log(books);
   const allBooks = books.data;
-  // console.log(allBooks);
   const history = useNavigate();
   function handleClick(id) {
     history(`/book/${id}`);
@@ -35,6 +33,7 @@ const Homepage = () => {
   );
 };
 export default Homepage;
+
 const H1 = styled.h1`
   font-family: "Cormorant", serif;
   background-color: #c4ba9f;

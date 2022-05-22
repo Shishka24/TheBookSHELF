@@ -3,7 +3,6 @@ import { useState } from "react";
 
 const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
-
   const { label, onChange, errorMessage, id, ...inputsProps } = props;
   const handleFocus = (e) => {
     setFocused(true);
@@ -28,11 +27,9 @@ export default FormInput;
 
 const Input = styled.input`
   display: flex;
-  /* flex-direction: column; */
   padding: 15px;
   margin: 10px 0px;
   width: 460px;
-  /* height: 80px; */
   border-radius: 5px;
   border: 1px solid gray;
   :invalid ~ span {

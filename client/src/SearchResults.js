@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const SearchResults = () => {
   const { searchResult } = useContext(BooksContext);
-  console.log(searchResult);
   const history = useNavigate();
   function handleClick(id) {
     history(`/book/${id}`);
@@ -27,9 +26,9 @@ const SearchResults = () => {
 };
 export default SearchResults;
 const ListContainer = styled.div`
+  position: relative;
   margin-left: 250px;
   margin-top: 20px;
-  /* justify-content: center; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -38,21 +37,22 @@ const ListContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 27px;
+  position: relative;
   display: flex;
   color: black;
   font-family: "Cormorant", serif;
   margin-bottom: 20px;
 `;
 const H1 = styled.h1`
+  position: relative;
   font-family: "Cormorant", serif;
-  background-color: #c4ba9f;
   justify-content: center;
   display: flex;
-  font-size: 40px;
+  font-size: 55px;
   color: grey;
   margin-bottom: 3%;
 `;
 const ImgBook = styled.img`
-  width: 50px;
+  width: 150px;
   /* filter: blur(0); */
 `;
