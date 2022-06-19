@@ -9,3 +9,7 @@ To create an account, you can follow the steps, the website will notify you of a
 Your account and information will be send to MongoDB and your password will be encrypted.
 Now you can go and login on the main page, see comments by other users and leave your own comments.
 You also have a profile page, that contains your personal information.
+
+
+https://user-images.githubusercontent.com/92067622/174461254-88d43c97-eca8-4eea-be64-f39463ee186d.mp4
+
