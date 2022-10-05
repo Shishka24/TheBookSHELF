@@ -4,15 +4,26 @@ import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const [books, setBooks] = useState([]);
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "873856791bmsh0e3f21396a8cb64p19bf12jsn1ebee9cc68e4",
+      "X-RapidAPI-Host": "hapi-books.p.rapidapi.com",
+    },
+  };
   useEffect(() => {
     const mainPage = async () => {
-      const res = await fetch(" http://localhost:5000");
+      const res = await fetch(
+        "https://hapi-books.p.rapidapi.com/month/2022/3",
+        options
+      );
       const data = await res.json();
       setBooks(data);
     };
     mainPage();
   }, []);
-  const allBooks = books.data;
+  const allBooks = books;
+  console.log(allBooks);
   const history = useNavigate();
   function handleClick(id) {
     history(`/book/${id}`);
@@ -48,9 +59,6 @@ const Title = styled.h1`
   color: black;
   font-family: "Cormorant", serif;
   display: flex;
-  /* margin-right: 15%;
-    display: flex;
-   */
 `;
 const ListContainer = styled.div`
   margin-left: 10%;

@@ -4,14 +4,13 @@ import { BooksContext } from "./BooksContext";
 import { useNavigate } from "react-router-dom";
 
 const SearchBooks = () => {
-  const { textValue, setTextValue, setSearchResult, searchResult } =
-    useContext(BooksContext);
+  const { textValue, setTextValue, setSearchResult } = useContext(BooksContext);
   const history = useNavigate();
   const options = {
     method: "GET",
     headers: {
+      "X-RapidAPI-Key": "873856791bmsh0e3f21396a8cb64p19bf12jsn1ebee9cc68e4",
       "X-RapidAPI-Host": "hapi-books.p.rapidapi.com",
-      "X-RapidAPI-Key": "2385336b51mshac5593ff9c397a4p1698ffjsnb6910d60abef",
     },
   };
   const handleSubmit = async (e) => {
