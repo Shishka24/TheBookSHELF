@@ -23,7 +23,6 @@ const Homepage = () => {
     mainPage();
   }, []);
   const allBooks = books;
-  console.log(allBooks);
   const history = useNavigate();
   function handleClick(id) {
     history(`/book/${id}`);

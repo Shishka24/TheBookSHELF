@@ -45,6 +45,7 @@ const SearchForm = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
+  border-radius: 25px;
 `;
 const Button = styled.button`
   border-radius: 25px;

@@ -10,6 +10,7 @@ const Book = () => {
   const { currentUser } = useContext(UsersContext);
   const [BookList, setBookList] = useState([]);
   const [status, setStatus] = useState("loading");
+  let count = 500;
   const options = {
     method: "GET",
     headers: {
@@ -26,6 +27,7 @@ const Book = () => {
       .then(() => setStatus("idle"))
       .catch((err) => console.log("Error from the server ", err));
   }, []);
+
   return (
     <>
       {status === "idle" && currentUser === null && (
@@ -34,7 +36,10 @@ const Book = () => {
           <Div2>
             <H3>{BookList.authors}</H3>
             <H3>{BookList.name}</H3>
-            <H3>{BookList.synopsis}</H3>
+            <H3>
+              {BookList.synopsis.slice(0, count) +
+                (BookList.synopsis.length > count ? "..." : "")}
+            </H3>
           </Div2>
         </DivBook>
       )}
@@ -43,8 +48,8 @@ const Book = () => {
           <DivBook>
             <ImgBook src={BookList.cover} alt={BookList} />
             <Div2>
-              <H3>{BookList.authors}</H3>
-              <H3>{BookList.name}</H3>
+              <H2>{BookList.authors}</H2>
+              <H2>{BookList.name}</H2>
               <H3>{BookList.synopsis}</H3>
             </Div2>
           </DivBook>
@@ -67,15 +72,24 @@ const DivBook = styled.div`
 `;
 const Div2 = styled.div`
   position: relative;
-  justify-content: center;
   margin: 85px 120px;
   padding: 20px 80px;
-  border: 4px solid grey;
 `;
 const H3 = styled.h3`
+  padding-top: 10px;
+  font-family: "Pacifico", cursive;
+  font-size: 27px;
+`;
+const H2 = styled.h3`
+  text-color: white;
+  padding-top: 20px;
+  font-family: "Pacifico", cursive;
   font-size: 20px;
 `;
 const ImgBook = styled.img`
-  width: 350px;
-  margin-left: 300px;
+  position: fixed;
+  max-width: 100%;
+  max-height: 50%;
+  margin-left: 25%;
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 `;
