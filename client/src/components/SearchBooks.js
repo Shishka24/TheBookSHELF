@@ -18,8 +18,10 @@ const SearchBooks = () => {
     fetch(`https://hapi-books.p.rapidapi.com/search/${textValue}`, options)
       .then((response) => response.json())
       .then((data) => setSearchResult(data))
+
       .catch((err) => console.error(err));
     history("/searchedBooks");
+    setTextValue("");
   };
   return (
     <SearchDiv>
@@ -45,7 +47,6 @@ const SearchForm = styled.form`
 `;
 const Input = styled.input`
   text-align: center;
-  border-radius: 25px;
 `;
 const Button = styled.button`
   border-radius: 25px;

@@ -9,6 +9,7 @@ const SearchResults = () => {
   function handleClick(id) {
     history(`/book/${id}`);
   }
+  console.log(searchResult);
   return (
     <>
       <H1>That's what you was looking for ?</H1>
@@ -53,6 +54,6 @@ const H1 = styled.h1`
   margin-bottom: 3%;
 `;
 const ImgBook = styled.img`
-  width: 150px;
+  /* width: 150px; */
   /* filter: blur(0); */
 `;

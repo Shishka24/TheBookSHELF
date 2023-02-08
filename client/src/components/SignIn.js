@@ -61,13 +61,10 @@ const SignIn = () => {
         "Content-Type": "application/json",
       },
     };
-
     fetch("http://localhost:5000/signin", settings)
       .then((res) => res.json())
-      .then((response) => {
-        console.log(response);
-      })
       .catch((error) => console.log("ERROR: ", error));
+    setValues({ username: "", email: "", birthday: "", password: "" });
   };
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
