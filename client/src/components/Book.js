@@ -34,8 +34,8 @@ const Book = () => {
         <DivBook>
           <ImgBook src={BookList.cover} alt={BookList} />
           <Div2>
-            <H3>{BookList.authors}</H3>
-            <H3>{BookList.name}</H3>
+            <H2>{BookList.authors}</H2>
+            <H2>{BookList.name}</H2>
             <H3>
               {BookList.synopsis.slice(0, count) +
                 (BookList.synopsis.length > count ? "..." : "")}
@@ -71,16 +71,17 @@ const DivBook = styled.div`
   margin-top: 120px;
 `;
 const Div2 = styled.div`
-  position: relative;
+  /* position: relative; */
   margin: 85px 120px;
   padding: 20px 80px;
 `;
-const H3 = styled.h3`
+const H2 = styled.h3`
+  text-decoration: underline;
   padding-top: 10px;
   font-family: "Pacifico", cursive;
   font-size: 27px;
 `;
-const H2 = styled.h3`
+const H3 = styled.h3`
   text-color: white;
   padding-top: 20px;
   font-family: "Pacifico", cursive;
