@@ -36,10 +36,10 @@ const Book = () => {
           <Div2>
             <H2>{BookList.authors}</H2>
             <H2>{BookList.name}</H2>
-            <h3>
+            <H3>
               {BookList.synopsis.slice(0, count) +
                 (BookList.synopsis.length > count ? "..." : "")}
-            </h3>
+            </H3>
           </Div2>
         </DivBook>
       )}
@@ -50,7 +50,10 @@ const Book = () => {
             <Div2>
               <H2>{BookList.authors}</H2>
               <H2>{BookList.name}</H2>
-              <H3>{BookList.synopsis}</H3>
+              <H3>
+                {BookList.synopsis.slice(0, count) +
+                  (BookList.synopsis.length > count ? "..." : "")}
+              </H3>
             </Div2>
           </DivBook>
           <div>
@@ -68,29 +71,32 @@ export default Book;
 const DivBook = styled.div`
   position: relative;
   display: flex;
-  margin-top: 120px;
+  padding-top: 10%;
 `;
 const Div2 = styled.div`
   /* position: relative; */
-  margin: 85px 120px;
+  /* margin: 85px 120px; */
   padding: 20px 80px;
 `;
 const H2 = styled.h3`
+  margin-left: 7%;
   text-decoration: underline;
   padding-top: 10px;
   font-family: "Pacifico", cursive;
-  font-size: 27px;
+  font-size: 40px;
 `;
 const H3 = styled.h3`
-  text-color: white;
+  /* text-color: white; */
   padding-top: 20px;
   font-family: "Pacifico", cursive;
-  font-size: 20px;
+  font-size: 25px;
+  margin-left: 35%;
+  margin-right: 25%;
 `;
 const ImgBook = styled.img`
   position: fixed;
   max-width: 100%;
-  max-height: 50%;
+  max-height: 100%;
   margin-left: 25%;
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 `;
