@@ -36,10 +36,10 @@ const Book = () => {
           <Div2>
             <H2>{BookList.authors}</H2>
             <H2>{BookList.name}</H2>
-            <H3>
+            <h3>
               {BookList.synopsis.slice(0, count) +
                 (BookList.synopsis.length > count ? "..." : "")}
-            </H3>
+            </h3>
           </Div2>
         </DivBook>
       )}
