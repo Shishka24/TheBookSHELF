@@ -1,6 +1,8 @@
 const { v4: uuidv4 } = require("uuid");
-var bcrypt = require("bcryptjs"); //importing bcrypt package
+var bcrypt = require("bcrypt"); //importing bcrypt package
 const saltRounds = 10;
+let salt = bcrypt.genSaltSync(10);
+// let hash = bcrypt.hashSync("B4c0//", salt);
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -17,8 +19,8 @@ const addUser = async (req, res) => {
   const { _id, username, email, birthday, password } = newUser;
   newUser._id = newUserID;
   newUser.type = "user";
-  bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash("B4c0//", salt, function (err, hash) {
       newUser.password = hash;
     });
   });

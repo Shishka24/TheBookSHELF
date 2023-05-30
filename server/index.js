@@ -11,7 +11,7 @@ const {
   addComment,
   getComments,
 } = require("./BooksHandlers/handlerBooks");
-const { addUser, getUsers, getUser } = require("./models/User");
+const { addUser, getUsers, getUser } = require("./UserHandler/User.js");
 
 const options = {
   useNewUrlParser: true,
